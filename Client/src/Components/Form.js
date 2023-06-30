@@ -3,24 +3,13 @@ import placehoderimage from '../images/placeholder-image-square.jpg';
 
 const storageArray = [];
 
-export default function Form() {
-  const [url, setUrl] = useState('');
-  const [title, setTitle] = useState('');
-  const [notes, setNotes] = useState('');
-
-  function handleFormOnSubmit(e) {
-    e.preventDefault();
-    storageArray.push({
-      url: { url },
-      title: { title },
-      notes: { notes },
-    });
-    setUrl('');
-    setTitle('');
-    setNotes('');
-    console.log(storageArray);
-  }
-
+export default function Form({
+  handleFormOnSubmit,
+  setTitle,
+  setUrl,
+  setNotes,
+  url,
+}) {
   return (
     <main>
       <form id="entryForm" onSubmit={(e) => handleFormOnSubmit(e)}>
