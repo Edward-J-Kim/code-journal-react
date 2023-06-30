@@ -2,65 +2,77 @@ import { useState } from 'react';
 import placehoderimage from '../images/placeholder-image-square.jpg';
 export default function Form() {
   const [url, setUrl] = useState('');
+  const [title, setTitle] = useState('');
+  const [notes, setNotes] = useState('');
+
+  function handleFormOnSubmit(e) {
+    e.preventDefault();
+    setUrl('');
+    setTitle('');
+    setNotes('');
+  }
+
   return (
     <main>
       <form id="entryForm">
-        <div class="row margin-bottom-1">
-          <div class="column-half">
+        <div className="row margin-bottom-1">
+          <div className="column-half">
             <img
-              class="input-b-radius form-image"
+              className="input-b-radius form-image"
               id="formImage"
-              src={placehoderimage}
+              src={url ? url : placehoderimage}
               alt="image of entry image"
             />
           </div>
-          <div class="column-half">
-            <label class="margin-bottom-1 d-block" for="title">
+          <div className="column-half">
+            <label className="margin-bottom-1 d-block" for="title">
               Title
             </label>
             <input
               required
-              class="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
+              className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
               type="text"
               id="formTitle"
               name="formTitle"
+              onChange={(e) => setTitle(e.target.value)}
             />
-            <label class="margin-bottom-1 d-block" for="photoUrk">
+            <label className="margin-bottom-1 d-block" for="photoUrk">
               Photo URL
             </label>
             <input
               required
-              class="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
+              className="input-b-color text-padding input-b-radius purple-outline input-height margin-bottom-2 d-block width-100"
               type="text"
               id="formURL"
               name="formURL"
+              onChange={(e) => setUrl(e.target.value)}
             />
-            onChange =
           </div>
         </div>
-        <div class="row margin-bottom-1">
-          <div class="column-full">
-            <label class="margin-bottom-1 d-block" for="formNotes">
+        <div className="row margin-bottom-1">
+          <div className="column-full">
+            <label className="margin-bottom-1 d-block" for="formNotes">
               Notes
             </label>
             <textarea
               required
-              class="input-b-color text-padding input-b-radius purple-outline d-block width-100"
+              className="input-b-color text-padding input-b-radius purple-outline d-block width-100"
               name="formNotes"
               id="formNotes"
               cols="30"
-              rows="10"></textarea>
+              rows="10"
+              onChange={(e) => setNotes(e.target.value)}></textarea>
           </div>
         </div>
-        <div class="row">
-          <div class="column-full d-flex justify-between">
+        <div className="row">
+          <div className="column-full d-flex justify-between">
             <button
-              class="invisible delete-entry-button"
+              className="invisible delete-entry-button"
               type="button"
               id="deleteEntry">
               Delete Entry
             </button>
-            <button class="input-b-radius text-padding purple-background white-text">
+            <button className="input-b-radius text-padding purple-background white-text">
               SAVE
             </button>
           </div>
