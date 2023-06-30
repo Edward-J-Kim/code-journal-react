@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import placehoderimage from '../images/placeholder-image-square.jpg';
+
+const storageArray = [];
+
 export default function Form() {
   const [url, setUrl] = useState('');
   const [title, setTitle] = useState('');
@@ -7,14 +10,20 @@ export default function Form() {
 
   function handleFormOnSubmit(e) {
     e.preventDefault();
+    storageArray.push({
+      url: { url },
+      title: { title },
+      notes: { notes },
+    });
     setUrl('');
     setTitle('');
     setNotes('');
+    console.log(storageArray);
   }
 
   return (
     <main>
-      <form id="entryForm">
+      <form id="entryForm" onSubmit={(e) => handleFormOnSubmit(e)}>
         <div className="row margin-bottom-1">
           <div className="column-half">
             <img
